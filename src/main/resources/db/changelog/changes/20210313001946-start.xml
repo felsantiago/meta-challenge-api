@@ -1,0 +1,71 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="felipe (generated)" id="1615605594412-1">
+        <createTable tableName="approval_processing">
+            <column name="id" type="BINARY(16)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="approval_processingPK"/>
+            </column>
+            <column name="active" type="INT"/>
+            <column name="buyerEmail" type="VARCHAR(120)"/>
+            <column name="buyerName" type="VARCHAR(200)"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="description" type="VARCHAR(200)"/>
+            <column name="due_date" type="datetime"/>
+            <column name="purchaseOrderName" type="VARCHAR(200)"/>
+            <column name="status" type="INT"/>
+            <column name="updated_at" type="timestamp"/>
+            <column name="responsible_id" type="BINARY(16)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-2">
+        <createTable tableName="hang_tag">
+            <column name="id" type="BINARY(16)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="hang_tagPK"/>
+            </column>
+            <column name="created_at" type="timestamp"/>
+            <column name="name" type="VARCHAR(120)"/>
+            <column name="updated_at" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-3">
+        <createTable tableName="hang_tag_approval_processing">
+            <column name="approval_processing_id" type="BINARY(16)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="hang_tag_id" type="BINARY(16)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-4">
+        <createTable tableName="user">
+            <column name="id" type="BINARY(16)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="userPK"/>
+            </column>
+            <column name="active" type="INT"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="name" type="VARCHAR(120)"/>
+            <column name="updated_at" type="timestamp"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-5">
+        <addUniqueConstraint columnNames="id" constraintName="UC_APPROVAL_PROCESSINGID_COL" tableName="approval_processing"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-6">
+        <addUniqueConstraint columnNames="id" constraintName="UC_HANG_TAGID_COL" tableName="hang_tag"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-7">
+        <addUniqueConstraint columnNames="id" constraintName="UC_USERID_COL" tableName="user"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-8">
+        <addForeignKeyConstraint baseColumnNames="approval_processing_id" baseTableName="hang_tag_approval_processing" constraintName="FKheh9ec5minfdcyhqwov6qhcp1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="approval_processing" validate="true"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-9">
+        <addForeignKeyConstraint baseColumnNames="responsible_id" baseTableName="approval_processing" constraintName="FKox8qu1hw4kbsfdhdmlueywwj4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615605594412-10">
+        <addForeignKeyConstraint baseColumnNames="hang_tag_id" baseTableName="hang_tag_approval_processing" constraintName="FKr9ekf3syv4g0x04y2gvsd7url" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="hang_tag" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
