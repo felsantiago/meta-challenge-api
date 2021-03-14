@@ -2,8 +2,9 @@ package br.com.challenge.meta.model.ApprovalProcessing;
 
 import br.com.challenge.meta.enumeration.AccessEnum;
 import br.com.challenge.meta.enumeration.StatusEnum;
-import br.com.challenge.meta.model.HangTag.HangTag;
 import br.com.challenge.meta.model.User.User;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,13 +12,14 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Set;
 import java.util.UUID;
 
 @Data
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "approval_processing")
+@Builder
 public class ApprovalProcessing implements Serializable {
   private static final long serialVersionUID = 196266143388770099L;
 
@@ -41,13 +43,6 @@ public class ApprovalProcessing implements Serializable {
   @Size(max = 11)
   @Column(name = "due_date", length = 11)
   private LocalDateTime dueDate;
-
-  @ManyToMany
-  @JoinTable(
-      name = "hang_tag_approval_processing",
-      joinColumns = @JoinColumn(name = "approval_processing_id"),
-      inverseJoinColumns = @JoinColumn(name = "hang_tag_id"))
-  Set<HangTag> hangTags;
 
   @Size(max = 200)
   @Column(length = 200)

@@ -1,16 +1,15 @@
 package br.com.challenge.meta.filter;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(builderClassName = "Builder", builderMethodName = "newBuilder")
-public class ApprovalProcessingFilter {
+@Builder
+@EqualsAndHashCode(callSuper = false)
+public class ApprovalProcessingFilter extends RepresentationModel<ApprovalProcessingFilter> {
   private UUID id;
 }

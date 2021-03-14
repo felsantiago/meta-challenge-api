@@ -2,6 +2,7 @@ package br.com.challenge.meta.service.User;
 
 import br.com.challenge.meta.dto.model.UserDTO;
 import br.com.challenge.meta.filter.UserFilter;
+import br.com.challenge.meta.model.User.User;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -42,4 +43,6 @@ public interface UserService {
    * @return Boolean
    */
   Boolean delete(UUID id);
+
+  User findById(UUID id);
 }

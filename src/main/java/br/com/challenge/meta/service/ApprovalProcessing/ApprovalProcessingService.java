@@ -1,7 +1,9 @@
 package br.com.challenge.meta.service.ApprovalProcessing;
 
-import br.com.challenge.meta.dto.model.ApprovalProcessingDTO;
+import br.com.challenge.meta.dto.form.ApprovalProcessingForm;
+import br.com.challenge.meta.exception.ApprovalProcessing.ApprovalProcessingNotFoundException;
 import br.com.challenge.meta.filter.ApprovalProcessingFilter;
+import br.com.challenge.meta.dto.model.ApprovalProcessingDTO;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -21,19 +23,19 @@ public interface ApprovalProcessingService {
   /**
    * This method is responsible for inserting a record in the database
    *
-   * @param dto data to insert
+   * @param form data to insert
    * @return DTO
    */
-  ApprovalProcessingDTO save(ApprovalProcessingDTO dto);
+  ApprovalProcessingDTO save(ApprovalProcessingForm form);
 
   /**
    * This method is responsible for updating a record in the database
    *
-   * @param dto data to update
+   * @param form data to update
    * @param id record id to be updated
    * @return DTO
    */
-  ApprovalProcessingDTO update(ApprovalProcessingDTO dto, UUID id);
+  ApprovalProcessingDTO update(ApprovalProcessingForm form, UUID id);
 
   /**
    * This method is responsible for removing a record in the database
@@ -41,5 +43,5 @@ public interface ApprovalProcessingService {
    * @param id record id to be deleted
    * @return Boolean
    */
-  Boolean delete(UUID id);
+  void delete(UUID id) throws ApprovalProcessingNotFoundException;
 }

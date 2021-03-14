@@ -10,7 +10,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder(builderClassName = "Builder", builderMethodName = "newBuilder")
+@Builder
 public class UserFilter {
   private UUID id;
 }

@@ -1,4 +1,4 @@
-package br.com.challenge.meta.util;
+package br.com.challenge.meta.util.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
