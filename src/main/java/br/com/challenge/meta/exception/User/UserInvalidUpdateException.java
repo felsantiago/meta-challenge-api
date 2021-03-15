@@ -3,8 +3,8 @@ package br.com.challenge.meta.exception.User;
 /**
  * Class that implements ApprovalProcessingInvalidUpdateException in the API.
  *
- * @author Mariana Azevedo
- * @since 01/04/2020
+   * @author Felipe Santiiago
+   * @since 2021-03-15
  */
 public class UserInvalidUpdateException extends Exception {
 

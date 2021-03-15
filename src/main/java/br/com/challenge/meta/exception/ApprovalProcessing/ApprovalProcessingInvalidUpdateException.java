@@ -3,10 +3,10 @@ package br.com.challenge.meta.exception.ApprovalProcessing;
 /**
  * Class that implements ApprovalProcessingInvalidUpdateException in the API.
  *
- * @author Mariana Azevedo
- * @since 01/04/2020
+   * @author Felipe Santiiago
+   * @since 2021-03-15
  */
-public class ApprovalProcessingInvalidUpdateException extends Exception {
+public class ApprovalProcessingInvalidUpdateException extends RuntimeException {
 
   private static final long serialVersionUID = -6443362632495638948L;
 

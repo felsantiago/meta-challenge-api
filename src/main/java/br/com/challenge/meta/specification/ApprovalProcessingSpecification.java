@@ -1,9 +1,8 @@
 package br.com.challenge.meta.specification;
 
-import br.com.challenge.meta.dto.model.ApprovalProcessingDTO;
-import br.com.challenge.meta.filter.ApprovalProcessingFilter;
-import br.com.challenge.meta.model.ApprovalProcessing.ApprovalProcessing;
-import br.com.challenge.meta.model.ApprovalProcessing.ApprovalProcessing_;
+import br.com.challenge.meta.specification.filter.ApprovalProcessingFilter;
+import br.com.challenge.meta.model.approvalProcessing.ApprovalProcessing;
+import br.com.challenge.meta.model.approvalProcessing.ApprovalProcessing_;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;

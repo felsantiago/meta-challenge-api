@@ -1,0 +1,88 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="felipe (generated)" id="1615777543087-1">
+        <createTable tableName="accounts">
+            <column name="id" type="BINARY(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_number" type="VARCHAR(255)"/>
+            <column name="account_type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-2">
+        <createTable tableName="approval_processing">
+            <column name="id" type="BINARY(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="INT"/>
+            <column name="buyerEmail" type="VARCHAR(120)"/>
+            <column name="buyerName" type="VARCHAR(200)"/>
+            <column name="created_at" type="timestamp"/>
+            <column name="description" type="VARCHAR(200)"/>
+            <column name="due_date" type="TINYBLOB"/>
+            <column name="purchaseOrderName" type="VARCHAR(200)"/>
+            <column name="status" type="INT"/>
+            <column name="updated_at" type="timestamp"/>
+            <column name="account_id" type="BINARY(16)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-3">
+        <createTable tableName="users">
+            <column name="id" type="BINARY(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-4">
+        <createTable tableName="users_accounts">
+            <column name="id" type="BINARY(16)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BINARY(16)"/>
+            <column name="user_id" type="BINARY(16)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-5">
+        <addPrimaryKey columnNames="id" constraintName="accountsPK" tableName="accounts"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-6">
+        <addPrimaryKey columnNames="id" constraintName="approval_processingPK" tableName="approval_processing"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-7">
+        <addPrimaryKey columnNames="id" constraintName="usersPK" tableName="users"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-8">
+        <addPrimaryKey columnNames="id" constraintName="users_accountsPK" tableName="users_accounts"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-9">
+        <addUniqueConstraint columnNames="id" constraintName="UC_ACCOUNTSID_COL" tableName="accounts"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-10">
+        <addUniqueConstraint columnNames="id" constraintName="UC_APPROVAL_PROCESSINGID_COL" tableName="approval_processing"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-11">
+        <addUniqueConstraint columnNames="id" constraintName="UC_USERSID_COL" tableName="users"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-12">
+        <addUniqueConstraint columnNames="id" constraintName="UC_USERS_ACCOUNTSID_COL" tableName="users_accounts"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-13">
+        <addForeignKeyConstraint baseColumnNames="account_id" baseTableName="approval_processing" constraintName="FK4m0qx5wddx20r4nwws9ouqi48" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="accounts"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-14">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_accounts" constraintName="FKd8emsqvyyvmxgfg90ylpu9nnx" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="felipe (generated)" id="1615777543087-15">
+        <addForeignKeyConstraint baseColumnNames="account_id" baseTableName="users_accounts" constraintName="FKm8oyohs2rjpfshb3gd0q1j5v0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="accounts"/>
+    </changeSet>
+</databaseChangeLog>

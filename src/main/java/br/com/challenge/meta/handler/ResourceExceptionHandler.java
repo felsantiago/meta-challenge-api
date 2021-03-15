@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.HttpClientErrorException;
@@ -97,6 +98,15 @@ public class ResourceExceptionHandler<T> {
 
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 	}
+
+  @ExceptionHandler(value = {AuthenticationException.class})
+  protected ResponseEntity<Response<T>> handleAuthenticationException(AuthenticationException exception) {
+
+    Response<T> response = new Response<>();
+    response.addErrorMsgToResponse(exception.getLocalizedMessage());
+
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+  }
 
   /**
    * Method that handles with a HttpClientErrorException and returns a Conflict

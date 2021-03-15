@@ -1,8 +1,8 @@
 package br.com.challenge.meta.specification;
 
-import br.com.challenge.meta.filter.UserFilter;
-import br.com.challenge.meta.model.User.User;
-import br.com.challenge.meta.model.User.User_;
+import br.com.challenge.meta.model.user.User;
+import br.com.challenge.meta.model.user.User_;
+import br.com.challenge.meta.specification.filter.UserFilter;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
