@@ -11,8 +11,6 @@ import br.com.challenge.meta.specification.ApprovalProcessingSpecification;
 import br.com.challenge.meta.specification.filter.ApprovalProcessingFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ServerErrorException;
 

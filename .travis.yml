@@ -1,0 +1,17 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+services:
+  - docker
+
+before_install:
+  - export TZ=Brazil/East
+  - docker build -t meta/challengeApi .
+  - docker run -d -p 127.0.0.1:80:4567 meta/challengeApi /bin/sh -c "cd /usr/src/app/api; bundle exec foreman start;"
+  - docker ps -a
+  - docker run meta/challengeApi /bin/sh -c "cd /usr/src/app/api; bundle exec rake test"
+
+script:
+  - bundle exec rake test
