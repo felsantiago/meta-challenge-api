@@ -8,10 +8,10 @@ services:
 
 before_install:
   - export TZ=Brazil/East
-  - docker build -t meta/challengeApi .
-  - docker run -d -p 127.0.0.1:80:4567 meta/challengeApi /bin/sh -c "cd /usr/src/app/api; bundle exec foreman start;"
+  - docker build -t meta/challengeapi .
+  - docker run -d -p 127.0.0.1:80:4567 meta/challengeapi /bin/sh -c "cd /usr/src/app/api; bundle exec foreman start;"
   - docker ps -a
-  - docker run meta/challengeApi /bin/sh -c "cd /usr/src/app/api; bundle exec rake test"
+  - docker run meta/challengeapi /bin/sh -c "cd /usr/src/app/api; bundle exec rake test"
 
 script:
   - ./mvnw clean install -B
