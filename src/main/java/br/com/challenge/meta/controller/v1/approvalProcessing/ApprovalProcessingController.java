@@ -70,7 +70,7 @@ public class ApprovalProcessingController {
       @RequestBody @Valid ApprovalProcessingDTO dto,
       BindingResult result,
       @RequestHeader(value = MetaApiUtil.HEADER_META_API_VERSION, defaultValue = "${api.version}") String apiVersion,
-      @RequestHeader(value = MetaApiUtil.HEADER_API_KEY, defaultValue = "${api.key}") String apiKey) throws Exception {
+      @RequestHeader(value = MetaApiUtil.HEADER_API_KEY, defaultValue = "${api.key}") String apiKey) {
 
     Response<ApprovalProcessingDTO> response = new Response<>();
 
